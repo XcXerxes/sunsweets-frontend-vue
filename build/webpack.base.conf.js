@@ -9,7 +9,7 @@ function resolve (dir) {
 
 module.exports = {
   entry: {
-    app: './src/main.js'
+    app: ['./src/main.js', './build/polyfills.js']
   },
   output: {
     path: config.build.assetsRoot,
@@ -22,6 +22,7 @@ module.exports = {
     extensions: ['.js', '.vue', '.json'],
     alias: {
       'vue$': 'vue/dist/vue.esm.js',
+      'muse-components': 'muse-ui/src',
       '@': resolve('src')
     }
   },
@@ -40,6 +41,10 @@ module.exports = {
         test: /\.vue$/,
         loader: 'vue-loader',
         options: vueLoaderConfig
+      },
+      {
+        test: /muse-ui.src.*?js$/,
+        loader: 'babel-loader'
       },
       {
         test: /\.js$/,
