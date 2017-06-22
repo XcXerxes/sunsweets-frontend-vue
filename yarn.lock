@@ -2350,7 +2350,7 @@ flatten@^1.0.2:
   version "1.0.2"
   resolved "http://registry.npm.taobao.org/flatten/download/flatten-1.0.2.tgz#dae46a9d78fbe25292258cc1e780a41d95c03782"
 
-flickity@^2.0.5, flickity@^2.0.8:
+flickity@^2.0.8:
   version "2.0.8"
   resolved "http://registry.npm.taobao.org/flickity/download/flickity-2.0.8.tgz#7b1dd65d2844def1eae8c2849b4725a67a71fa2c"
   dependencies:
@@ -5245,6 +5245,10 @@ svgo@^0.7.0:
     sax "~1.2.1"
     whet.extend "~0.9.9"
 
+swiper@^3.4.2:
+  version "3.4.2"
+  resolved "http://registry.npm.taobao.org/swiper/download/swiper-3.4.2.tgz#39d6b410b1a39833e1f72d3b72999df5f5e38392"
+
 table@^3.7.8:
   version "3.8.3"
   resolved "http://registry.npm.taobao.org/table/download/table-3.8.3.tgz#2bbc542f0fda9861a755d3947fefd8b3f513855f"
@@ -5559,12 +5563,6 @@ vm-browserify@0.0.4:
 void-elements@^2.0.0:
   version "2.0.1"
   resolved "http://registry.npm.taobao.org/void-elements/download/void-elements-2.0.1.tgz#c066afb582bb1cb4128d60ea92392e94d5e9dbec"
-
-vue-flickity@^1.0.8:
-  version "1.0.8"
-  resolved "http://registry.npm.taobao.org/vue-flickity/download/vue-flickity-1.0.8.tgz#dcd1a4a260dbaf2005f7ce33850fe2d135763cc2"
-  dependencies:
-    flickity "^2.0.5"
 
 vue-hot-reload-api@^2.1.0:
   version "2.1.0"

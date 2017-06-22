@@ -27,7 +27,8 @@
 .mu-appbar.header-appbar {
   justify-content: center;
   background-color: transparent;
-  color:#7e57c2;
+  color:#222;
+  font-weight: 600;
   height: 48px;
   line-height: 48px;
   position: absolute;

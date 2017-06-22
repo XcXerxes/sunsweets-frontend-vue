@@ -3,6 +3,7 @@
 import Vue from 'vue'
 import store from './store'
 import 'muse-components/styles/base.less' // 加载基础的样式
+import 'swiper/dist/css/swiper.css'
 import App from './App'
 import router from './router'
 import 'flickity/dist/flickity.min.css'
