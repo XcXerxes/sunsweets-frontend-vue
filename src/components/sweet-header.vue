@@ -1,5 +1,5 @@
 <template>
-  <mu-appbar class="header-appbar">
+  <mu-appbar class="header-appbar" ref="headerBar" :class="showBg ? 'header-scroll' : 'header-noScroll' ">
     <mu-flat-button label="首页" slot="left" to="/" activeClass="active"  />
     <mu-flat-button href="333" label="甜品SHOW" to="/sweet" slot="left" activeClass="active" />
     <div class="header-paper">
@@ -10,7 +10,41 @@
   </mu-appbar>
 </template>
 <script>
+  export default {
+    data () {
+      return {
+        showBg: false
+      }
+    },
+    watch: {
 
+    },
+    methods: {
+      setScroll () {
+        const {scrollTop} = document.body
+        if (scrollTop > 70) {
+          if (!this.isScroll) {
+            this.showBg = true
+            this.isScroll = true
+          }
+        } else {
+          if (this.isScroll) {
+            this.showBg = false
+            this.isScroll = false
+          }
+        }
+      }
+    },
+    beforeUpdate () {
+      console.log('update')
+    },
+    mounted () {
+      this.isScroll = false
+      window.addEventListener('scroll', (event) => {
+        this.setScroll()
+      }, false)
+    }
+  }
 </script>
 <style>
 .header-paper {
@@ -26,13 +60,23 @@
 
 .mu-appbar.header-appbar {
   justify-content: center;
-  background-color: transparent;
-  color:#222;
-  font-weight: 600;
+  color:#7e57c2;
+  font-weight: 500;
   height: 48px;
   line-height: 48px;
-  position: absolute;
+  position: fixed;
+}
+.mu-appbar.header-appbar.header-scroll {
+  background-color: #f9f9f9;
+  top:0;
+  transition: all .6s ease;
+  box-shadow: 0 2px 10px #e4e4e4;
+}
+
+.mu-appbar.header-appbar.header-noScroll {
+  background-color: transparent;
   top:20px;
+  transition: all .6s ease;
 }
 
 .header-appbar .mu-appbar-title {
@@ -42,7 +86,7 @@
 }
 
 .header-appbar  .mu-flat-button {
-  margin: 0 12px;
+  margin: 0 .875rem;
 }
 
 .header-appbar  .mu-flat-button:hover {
@@ -50,8 +94,9 @@
 }
 
 .header-appbar  .mu-flat-button.active {
-  background-color: #7e57c2;
+  background-color: rgba(126,87,194,.7);
   color: #fff;
+  border-radius: 0;
 }
 </style>
 
