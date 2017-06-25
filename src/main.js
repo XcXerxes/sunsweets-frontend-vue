@@ -7,6 +7,7 @@ import 'swiper/dist/css/swiper.css'
 import App from './App'
 import router from './router'
 import './assets/less/public.less'
+import 'muse-components/grid/grid.less'
 
 import appBar from 'muse-components/appBar'
 import paper from 'muse-components/paper'
@@ -18,7 +19,9 @@ import gridTile from 'muse-components/gridList/gridTile'
 import row from 'muse-components/grid/row'
 import col from 'muse-components/grid/col'
 import icon from 'muse-components/icon'
-import 'muse-components/grid/grid.less'
+import textField from 'muse-components/textField'
+import raisedButton from 'muse-components/raisedButton'
+import popup from 'muse-components/popup'
 
 Vue.component(appBar.name, appBar)
 Vue.component(paper.name, paper)
@@ -30,6 +33,9 @@ Vue.component(gridList.name, gridList)
 Vue.component(gridTile.name, gridTile)
 Vue.component(iconButton.name, iconButton)
 Vue.component(icon.name, icon)
+Vue.component(textField.name, textField)
+Vue.component(raisedButton.name, raisedButton)
+Vue.component(popup.name, popup)
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */

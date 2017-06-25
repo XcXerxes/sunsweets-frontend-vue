@@ -52,14 +52,8 @@ export default {
 }
 </script>
 <style>
-.sweet-carousel {
-  width: 100%;
-  overflow: hidden;
+.sweet-swiper{
   position: relative;
-}
-
-.v-carousel-item {
-  height: 100%;
 }
 .swiper-mask {
   width: 100%;

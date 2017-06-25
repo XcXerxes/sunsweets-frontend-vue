@@ -10,6 +10,7 @@
   </mu-appbar>
 </template>
 <script>
+  import {TweenLite, Power4} from 'gsap'
   export default {
     data () {
       return {
@@ -22,7 +23,7 @@
     methods: {
       setScroll () {
         const {scrollTop} = document.body
-        if (scrollTop > 70) {
+        if (scrollTop > 100) {
           if (!this.isScroll) {
             this.showBg = true
             this.isScroll = true
@@ -39,6 +40,7 @@
       console.log('update')
     },
     mounted () {
+      TweenLite.to(this.$el, 0.2, { opacity: 1, left: 0, ease: Power4.easeIn })
       this.isScroll = false
       window.addEventListener('scroll', (event) => {
         this.setScroll()
@@ -64,7 +66,9 @@
   font-weight: 500;
   height: 48px;
   line-height: 48px;
+  left:-600px;
   position: fixed;
+  opacity: 0;
 }
 .mu-appbar.header-appbar.header-scroll {
   background-color: #f9f9f9;
