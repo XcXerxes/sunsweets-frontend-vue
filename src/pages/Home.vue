@@ -48,7 +48,7 @@
   export default {
     data () {
       return {
-        content: aboutContent.content.replace,
+        content: aboutContent.content,
         topPopup: false
       }
     },
