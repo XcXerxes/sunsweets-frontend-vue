@@ -6,13 +6,13 @@
     </div>
     <div class="sweet-container">
       <div class="sweet-container__list">
-        <show-sub-list :activeClass="activeClass" :list="list" title="城市："></show-sub-list>
+        <show-sub-list :activeClass="activeClass" icon-type="location_city" :list="list" title="城市："></show-sub-list>
         <mu-divider />
-        <show-sub-list :activeClass="activeClass" :list="list" title="城市："></show-sub-list>
+        <show-sub-list :activeClass="activeClass" icon-type="room" :list="list" title="片区："></show-sub-list>
         <mu-divider  />
-        <show-sub-list :activeClass="activeClass" :list="list" title="城市："></show-sub-list>
+        <show-sub-list :activeClass="activeClass" icon-type="format_indent_increase" :list="list" title="分类："></show-sub-list>
         <mu-divider />
-        <show-sub-list :activeClass="activeClass" :list="list" title="城市："></show-sub-list>
+        <show-sub-list :activeClass="activeClass" icon-type="graphic_eq" :list="list" title="排序："></show-sub-list>
         <mu-divider  />
       </div>
       <div class="sweet-show__info">
@@ -78,7 +78,7 @@
     right: 0;
     max-height: 600px;
     height: 600px;
-    background-color: rgba(0, 0, 0, .1)
+    background-color: rgba(0, 0, 0, .2);
   }
   .sweet-show__info {
     padding: .65rem;

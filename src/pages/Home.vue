@@ -2,28 +2,28 @@
   <div>
     <sweet-carousel :carouselList="carouselList" ></sweet-carousel>
     <div class="sweet-container">
-      <div class="sweet-show">
+      <div class="sweet-home__show">
         <sweet-subTitle label="甜品 SHOW"  icon-type="polymer" color="#ff4081" ></sweet-subTitle>
         <sweet-more label="更多" icon-type="chevron_right" icon-color="#e4e4e4" ></sweet-more>
         <sweet-list></sweet-list>
       </div>
     </div>
     <div class="sweet-container">
-      <div class="sweet-shop">
+      <div class="sweet-home__shop">
         <sweet-subTitle label="甜品驿站" icon-type="account_balance" color="#7e57c2"></sweet-subTitle>
         <sweet-more label="更多" icon-type="chevron_right" icon-color="#e4e4e4" ></sweet-more>
         <sweet-list></sweet-list>
       </div>
     </div>
     <div class="sweet-container">
-      <div class="sweet-about">
+      <div class="sweet-home__about">
         <sweet-subTitle label="关于我们" icon-type="dashboard" color="#42a5f5" ></sweet-subTitle>
         <div class="sweet-about__content" v-html="content">
         </div>
       </div>
     </div>
     <div class="sweet-container">
-      <div class="sweet-contact">
+      <div class="sweet-home__contact">
         <sweet-subTitle label="联系我们" icon-type="call" color="#66bb6a" ></sweet-subTitle>
         <call-form v-on:submit="submitHandle" ></call-form>
       </div>
@@ -101,10 +101,10 @@
     font-size:1.8rem;
     color:#eee;
   }
-  .sweet-show,
-  .sweet-shop,
-  .sweet-about,
-  .sweet-contact
+  .sweet-home__show,
+  .sweet-home__shop,
+  .sweet-home__about,
+  .sweet-home__contact
   {
     margin-bottom:2.4rem;
   }

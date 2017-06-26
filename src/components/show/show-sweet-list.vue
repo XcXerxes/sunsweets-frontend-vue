@@ -1,7 +1,7 @@
 <template>
   <div class="sweet-info">
     <mu-circular-progress :size="50" class="sweet-info__progress"></mu-circular-progress>
-    <mu-row gutter :style="{display:'none'}">
+    <mu-row gutter >
       <template v-for="n in 9">
         <mu-col width="100" tablet="50" desktop="33" class="sweet-info__col">
           <div class="sweet-info__content">
@@ -16,7 +16,7 @@
   </div>
 </template>
 <script>
-  
+
 </script>
 <style>
   .sweet-info {

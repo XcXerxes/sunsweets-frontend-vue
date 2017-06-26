@@ -1,21 +1,21 @@
 <template>
   <div class="sweet-show-list">
     <div class="sweet-show-label">
-      <mu-icon value="home" color="#e4e4e4" :size="20"></mu-icon>
+      <mu-icon :value="iconType" color="#a4a4a4" :size="20"></mu-icon>
       <span>{{title}}</span>
     </div>
     <div class="sweet-show-list__content"></div>
     <template v-for="(item, index) in list">
       <mu-flat-button  :key="index" @click="selectLabel(item.label)"
-      :label="item.label" :primary="item.primary || false" :secondary="item.secondary || false" 
-      :activeClass="activeClass"></mu-flat-button> 
+      :label="item.label" :primary="item.primary || false" :secondary="item.secondary || false"
+      :activeClass="activeClass"></mu-flat-button>
     </template>
   </div>
 </template>
 
 <script>
   export default {
-    props: ['title', 'icon-type', 'icon-color', 'list', 'activeClass'],
+    props: ['title', 'iconType', 'icon-color', 'list', 'activeClass'],
     name: 'show-sub-list',
     methods: {
       selectLabel (label) {
