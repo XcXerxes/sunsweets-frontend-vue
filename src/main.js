@@ -22,6 +22,9 @@ import icon from 'muse-components/icon'
 import textField from 'muse-components/textField'
 import raisedButton from 'muse-components/raisedButton'
 import popup from 'muse-components/popup'
+import divider from 'muse-components/divider'
+import pagination from 'muse-components/pagination'
+import circularProgress from 'muse-components/circularProgress'
 
 Vue.component(appBar.name, appBar)
 Vue.component(paper.name, paper)
@@ -36,6 +39,9 @@ Vue.component(icon.name, icon)
 Vue.component(textField.name, textField)
 Vue.component(raisedButton.name, raisedButton)
 Vue.component(popup.name, popup)
+Vue.component(divider.name, divider)
+Vue.component(pagination.name, pagination)
+Vue.component(circularProgress.name, circularProgress)
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */

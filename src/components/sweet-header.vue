@@ -1,7 +1,7 @@
 <template>
   <mu-appbar class="header-appbar" ref="headerBar" :class="showBg ? 'header-scroll' : 'header-noScroll' ">
-    <mu-flat-button label="首页" slot="left" to="/" activeClass="active"  />
-    <mu-flat-button href="333" label="甜品SHOW" to="/sweet" slot="left" activeClass="active" />
+    <mu-flat-button label="首页" slot="left" to="/" activeClass="active" exact />
+    <mu-flat-button label="甜品SHOW" to="/show" slot="left" activeClass="active" />
     <div class="header-paper">
       <img :src="require('../assets/images/sm_logo.png')" />
     </div>

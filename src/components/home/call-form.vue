@@ -27,6 +27,7 @@
     </div>
 </template>
 <script>
+    import '@/utils'
     import {TweenLite, Power4} from 'gsap'
     export default {
       data () {
@@ -59,20 +60,42 @@
             console.log('submit success !!!!')
             this.$emit('submit', this.sendForm)
           }
+        },
+        tweenEaseOut () {
+          TweenLite.to(this.$refs.sendName.$el, 1.6, { opacity: 1, transform: 'translateX(0)', ease: Power4.easeOut })
+          TweenLite.to(this.$refs.sendContact.$el, 2, { opacity: 1, transform: 'translateX(0)', ease: Power4.easeOut })
+          TweenLite.to(this.$refs.sendContent.$el, 2.4, { opacity: 1, transform: 'translateX(0)', ease: Power4.easeOut })
+        },
+        tweenEaseIn () {
+          TweenLite.to(this.$refs.sendName.$el, 1, { opacity: 0, transform: 'translateX(-600px)', ease: Power4.easeIn })
+          TweenLite.to(this.$refs.sendContact.$el, 0.8, { opacity: 0, transform: 'translateX(800px)', ease: Power4.easeIn })
+          TweenLite.to(this.$refs.sendContent.$el, 1.2, { opacity: 0, transform: 'translateX(800px)', ease: Power4.easeIn })
         }
       },
       mounted () {
         window.addEventListener('scroll', () => {
           console.log(document.body.scrollTop)
-          if (document.body.scrollTop > 700 && document.body.scrollTop < 1200) {
-            TweenLite.to(this.$refs.sendName.$el, 1.6, { opacity: 1, transform: 'translateX(0)', ease: Power4.easeOut })
-            TweenLite.to(this.$refs.sendContact.$el, 2, { opacity: 1, transform: 'translateX(0)', ease: Power4.easeOut })
-            TweenLite.to(this.$refs.sendContent.$el, 2.4, { opacity: 1, transform: 'translateX(0)', ease: Power4.easeOut })
+          /*
+          if (document.body.clientWidth > 960) {
+            if (document.body.scrollTop > 1200 && document.body.scrollTop < 1550) {
+              this.tweenEaseOut()
+            } else {
+              this.tweenEaseIn()
+            }
+          } else if (document.body.clientWidth <= 960 && document.body.clientWidth > 582) {
+            if (document.body.scrollTop > 1500 && document.body.scrollTop < 1800) {
+              this.tweenEaseOut()
+            } else {
+              this.tweenEaseIn()
+            }
           } else {
-            TweenLite.to(this.$refs.sendName.$el, 1, { opacity: 0, transform: 'translateX(-600px)', ease: Power4.easeIn })
-            TweenLite.to(this.$refs.sendContact.$el, 0.8, { opacity: 0, transform: 'translateX(800px)', ease: Power4.easeIn })
-            TweenLite.to(this.$refs.sendContent.$el, 1.2, { opacity: 0, transform: 'translateX(800px)', ease: Power4.easeIn })
+            if (document.body.scrollTop > 2000 && document.body.scrollTop < 2700) {
+              this.tweenEaseOut()
+            } else {
+              this.tweenEaseIn()
+            }
           }
+          */
         }, false)
       }
     }

@@ -1,6 +1,5 @@
 <template>
   <div>
-    <sweet-header></sweet-header>
     <sweet-carousel :carouselList="carouselList" ></sweet-carousel>
     <div class="sweet-container">
       <div class="sweet-show">
@@ -36,7 +35,6 @@
 </template>
 
 <script>
-  import sweetHeader from '@/components/sweet-header'
   import sweetCarousel from '@/components/home/sweet-carousel'
   import sweetList from '@/components/home/sweet-show'
   import sweetSubTitle from '@/components/home/sweet-subTitle'
@@ -87,7 +85,6 @@
       })
     },
     components: {
-      sweetHeader,
       sweetCarousel,
       sweetList,
       sweetSubTitle,

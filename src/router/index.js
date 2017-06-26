@@ -8,10 +8,31 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'Home',
       component (resolve) {
-        require(['@/pages/Home'], resolve)
-      }
+        require(['@/pages/routes'], resolve)
+      },
+      children: [
+        {
+          path: '/',
+          component (resolve) {
+            require(['@/pages/Home'], resolve)
+          }
+        },
+        {
+          path: '/home',
+          name: 'home',
+          component (resolve) {
+            require(['@/pages/Home'], resolve)
+          }
+        },
+        {
+          path: '/show',
+          name: 'sweetShow',
+          component (resolve) {
+            require(['@/pages/sweet-show'], resolve)
+          }
+        }
+      ]
     }
   ]
 })
