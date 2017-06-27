@@ -3,7 +3,6 @@ import config from '@/config'
 
 const _parseParams = (method, params) => {
   const headers = {
-    'X-Requested-With': 'XMLHttpRequest',
     'Content-Type': 'application/json'
   }
   if (!method) {

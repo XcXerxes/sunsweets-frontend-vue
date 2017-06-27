@@ -4,9 +4,9 @@
     <mu-row gutter >
       <template v-for="n in 9">
         <mu-col width="100" tablet="50" desktop="33" class="sweet-info__col">
-          <div class="sweet-info__content">
+          <div class="sweet-info__content" @mouseenter="mouseenterHandle" @mouseleave="mouseleaveHandle">
             <div class="sweet-info__body"></div>
-            <div class="sweet-info__sub">
+            <div class="sweet-info__sub" ref="sweetInfoSub">
               <span>sub_title</span>
             </div>
           </div>
@@ -16,7 +16,28 @@
   </div>
 </template>
 <script>
-
+  import {TweenMax, Power3} from 'gsap'
+  export default {
+    methods: {
+      mouseenterHandle (event) {
+        const sweetInfoSub = event.target.getElementsByClassName('sweet-info__sub')[0]
+        TweenMax.to(sweetInfoSub, 0.3, {
+          height: '68px',
+          visibility: 'visible',
+          ease: Power3.easeOut
+        })
+        console.log(event.target)
+      },
+      mouseleaveHandle (event) {
+        const sweetInfoSub = event.target.getElementsByClassName('sweet-info__sub')[0]
+        TweenMax.to(sweetInfoSub, 0.6, {
+          height: 0,
+          ease: Power3.easeIn
+        })
+        console.log(event)
+      }
+    }
+  }
 </script>
 <style>
   .sweet-info {
@@ -33,6 +54,7 @@
     height: 240px;
     border: 1px solid #e4e4e4;
     position: relative;
+    overflow: hidden;
   }
   .sweet-info__col {
     margin-bottom: 10px;
@@ -43,7 +65,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    height: 68px;
+    height: 0;
     background-color: rgba(0, 0, 0, .3);
   }
 </style>

@@ -6,13 +6,13 @@
     </div>
     <div class="sweet-container">
       <div class="sweet-container__list">
-        <show-sub-list :activeClass="activeClass" icon-type="location_city" :list="list" title="城市："></show-sub-list>
+        <show-sub-list :activeClass="activeClass" icon-type="location_city" icon-color="#7e57c2" :list="list" title="城市："></show-sub-list>
         <mu-divider />
-        <show-sub-list :activeClass="activeClass" icon-type="room" :list="list" title="片区："></show-sub-list>
+        <show-sub-list :activeClass="activeClass" icon-type="room" icon-color="#66bb6a" :list="list" title="片区："></show-sub-list>
         <mu-divider  />
-        <show-sub-list :activeClass="activeClass" icon-type="format_indent_increase" :list="list" title="分类："></show-sub-list>
+        <show-sub-list :activeClass="activeClass" icon-type="format_indent_increase" icon-color="#42a5f5" :list="list" title="分类："></show-sub-list>
         <mu-divider />
-        <show-sub-list :activeClass="activeClass" icon-type="graphic_eq" :list="list" title="排序："></show-sub-list>
+        <show-sub-list :activeClass="activeClass" icon-type="graphic_eq" icon-color="#ff4081" :list="orderList" title="排序："></show-sub-list>
         <mu-divider  />
       </div>
       <div class="sweet-show__info">
@@ -25,6 +25,8 @@
   </div>
 </template>
 <script>
+  import orderConfig from '@/config/order-config'   // 排序的分类信息
+
   import showSubList from '@/components/show/show-sub-list'
   import showSweetList from '@/components/show/show-sweet-list'
   import showVideo from '@/components/show/show-video'
@@ -47,6 +49,7 @@
             label: '深圳'
           }
         ],
+        orderList: orderConfig,
         total: 300,
         limit: 9,
         currentPage: 1

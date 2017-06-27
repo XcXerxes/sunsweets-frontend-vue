@@ -31,6 +31,13 @@ export default new Router({
           component (resolve) {
             require(['@/pages/sweet-show'], resolve)
           }
+        },
+        {
+          path: '/shop',
+          name: 'sweetShop',
+          component (resolve) {
+            require(['@/pages/sweet-shop'], resolve)
+          }
         }
       ]
     }

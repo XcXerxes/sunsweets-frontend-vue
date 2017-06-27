@@ -1,5 +1,5 @@
 <template>
-  <mu-appbar class="header-appbar" ref="headerBar" :class="showBg ? 'header-scroll' : 'header-noScroll' ">
+  <mu-appbar class="header-appbar header-scroll" ref="headerBar">
     <mu-flat-button label="首页" slot="left" to="/" activeClass="active" exact />
     <mu-flat-button label="甜品SHOW" to="/show" slot="left" activeClass="active" />
     <div class="header-paper">
@@ -10,6 +10,7 @@
   </mu-appbar>
 </template>
 <script>
+  // *:class="showBg ? 'header-scroll' : 'header-noScroll' "
   import {TweenLite, Power4} from 'gsap'
   export default {
     data () {
@@ -64,8 +65,8 @@
   justify-content: center;
   color:#7e57c2;
   font-weight: 500;
-  height: 48px;
-  line-height: 48px;
+  height: 52px;
+  line-height: 52px;
   left:-600px;
   position: fixed;
   opacity: 0;
@@ -74,7 +75,7 @@
   background-color: #f9f9f9;
   top:0;
   transition: all .6s ease;
-  box-shadow: 0 2px 10px #e4e4e4;
+  box-shadow: 0 2px 6px #e4e4e4;
 }
 
 .mu-appbar.header-appbar.header-noScroll {

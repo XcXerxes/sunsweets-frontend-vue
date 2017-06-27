@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="sweet-home">
     <sweet-carousel :carouselList="carouselList" ></sweet-carousel>
     <div class="sweet-container">
       <div class="sweet-home__show">
@@ -40,7 +40,7 @@
   import sweetSubTitle from '@/components/home/sweet-subTitle'
   import sweetMore from '@/components/home/sweet-more'
   import callForm from '@/components/home/call-form'
-  import aboutContent from '@/utils/about-config'
+  import aboutContent from '@/config/about-config'
   import {mapGetters} from 'vuex'
 
   export default {
