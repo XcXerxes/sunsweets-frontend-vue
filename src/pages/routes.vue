@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="sweet">
     <sweet-header></sweet-header>
     <router-view></router-view>
     <sweet-footer></sweet-footer>

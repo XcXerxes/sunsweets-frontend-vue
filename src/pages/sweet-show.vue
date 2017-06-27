@@ -5,21 +5,23 @@
       <show-video :src="mp4Src"></show-video>
     </div>
     <div class="sweet-container">
-      <div class="sweet-container__list">
-        <show-sub-list :activeClass="activeClass" icon-type="location_city" icon-color="#7e57c2" :list="list" title="城市："></show-sub-list>
-        <mu-divider />
-        <show-sub-list :activeClass="activeClass" icon-type="room" icon-color="#66bb6a" :list="list" title="片区："></show-sub-list>
-        <mu-divider  />
-        <show-sub-list :activeClass="activeClass" icon-type="format_indent_increase" icon-color="#42a5f5" :list="list" title="分类："></show-sub-list>
-        <mu-divider />
-        <show-sub-list :activeClass="activeClass" icon-type="graphic_eq" icon-color="#ff4081" :list="orderList" title="排序："></show-sub-list>
-        <mu-divider  />
-      </div>
-      <div class="sweet-show__info">
-        <show-sweet-list />
-        <mu-pagination :total="total" showSizeChanger :pageSizeOption="[10, 15, 20]"
-        :current="currentPage" :pageSize="limit"
-         @pageSizeChange="handlePageSize" @pageChange="handlePage" class="sweet-pagination"></mu-pagination>
+      <div class="sweet-main">
+        <div class="sweet-container__list">
+          <cate-list :activeClass="activeClass" icon-type="location_city" icon-color="#7e57c2" :list="list" title="城市："></cate-list>
+          <mu-divider />
+          <cate-list :activeClass="activeClass" icon-type="room" icon-color="#66bb6a" :list="list" title="片区："></cate-list>
+          <mu-divider  />
+          <cate-list :activeClass="activeClass" icon-type="format_indent_increase" icon-color="#42a5f5" :list="list" title="分类："></cate-list>
+          <mu-divider />
+          <cate-list :activeClass="activeClass" icon-type="graphic_eq" icon-color="#ff4081" :list="orderList" title="排序："></cate-list>
+          <mu-divider  />
+        </div>
+        <div class="sweet-show__info">
+          <show-sweet-list />
+          <mu-pagination :total="total" showSizeChanger :pageSizeOption="[10, 15, 20]"
+          :current="currentPage" :pageSize="limit"
+          @pageSizeChange="handlePageSize" @pageChange="handlePage" class="sweet-pagination"></mu-pagination>
+        </div>
       </div>
     </div>
   </div>
@@ -27,7 +29,7 @@
 <script>
   import orderConfig from '@/config/order-config'   // 排序的分类信息
 
-  import showSubList from '@/components/show/show-sub-list'
+  import cateList from '@/components/common/cate-list'
   import showSweetList from '@/components/show/show-sweet-list'
   import showVideo from '@/components/show/show-video'
   export default {
@@ -64,7 +66,7 @@
       }
     },
     components: {
-      'show-sub-list': showSubList,
+      cateList,
       showVideo,
       showSweetList
     }

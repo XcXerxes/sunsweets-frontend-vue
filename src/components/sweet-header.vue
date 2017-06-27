@@ -11,7 +11,7 @@
 </template>
 <script>
   // *:class="showBg ? 'header-scroll' : 'header-noScroll' "
-  import {TweenLite, Power4} from 'gsap'
+  import {TweenMax, Power4} from 'gsap'
   export default {
     data () {
       return {
@@ -41,7 +41,7 @@
       console.log('update')
     },
     mounted () {
-      TweenLite.to(this.$el, 0.2, { opacity: 1, left: 0, ease: Power4.easeIn })
+      TweenMax.to(this.$el, 0.3, { left: 0, opacity: 1, ease: Power4.easeIn })
       this.isScroll = false
       window.addEventListener('scroll', (event) => {
         this.setScroll()
