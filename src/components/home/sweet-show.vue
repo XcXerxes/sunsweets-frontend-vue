@@ -1,38 +1,14 @@
 <template>
   <mu-row gutter>
-    <template v-for="(index, item) in list">
-      <sweet-item></sweet-item>
+    <template v-for="(item, index) in list">
+      <sweet-item :key="index" :data="item"></sweet-item>
     </template>
   </mu-row>
 </template>
 <script>
 import sweetItem from './sweet-item'
-var list = [
-  {
-    name: 1
-  },
-  {
-    name: 1
-  },
-  {
-    name: 1
-  },
-  {
-    name: 1
-  },
-  {
-    name: 1
-  },
-  {
-    name: 1
-  }
-]
 export default {
-  data () {
-    return {
-      list: list
-    }
-  },
+  props: ['list'],
   components: {
     sweetItem
   }

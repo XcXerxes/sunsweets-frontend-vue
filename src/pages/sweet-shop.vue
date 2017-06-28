@@ -5,6 +5,19 @@
       <div class="sweet-main">
         <div class="sweet-shop__cate">
           <cate-list icon-type="location_city" icon-color="#7e57c2" :list="list" title="城市："></cate-list>
+          <mu-divider/>
+          <cate-list icon-type="location_city" icon-color="#7e57c2" :list="list" title="区域："></cate-list>
+          <mu-divider />
+          <cate-list icon-type="location_city" icon-color="#7e57c2" :list="list" title="消费："></cate-list>
+          <mu-divider />
+          <cate-list icon-type="location_city" icon-color="#7e57c2" :list="list" title="排序："></cate-list>
+          <mu-divider />
+        </div>
+        <div class="sweet-shop__content">
+          <shop-card></shop-card>
+          <mu-pagination :total="total" :pageSizeOption="[10, 15, 20]"
+          :current="currentPage" :pageSize="limit"
+          @pageSizeChange="handlePageSize" @pageChange="handlePage" class="shop-pagination"></mu-pagination>
         </div>
       </div>
     </section>
@@ -13,6 +26,7 @@
 <script>
 import shopCover from '@/components/shop/shop-cover'
 import cateList from '@/components/common/cate-list'
+import shopCard from '@/components/shop/shop-card'
 
 export default {
   data () {
@@ -35,12 +49,34 @@ export default {
         {
           title: '深圳'
         }
-      ]
+      ],
+      total: 36,
+      currentPage: 1,
+      limit: 8
+    }
+  },
+  methods: {
+    handlePageSize (limit) {
+      this.limit = limit
+    },
+    handlePage (currentPage) {
+      this.currentPage = currentPage
     }
   },
   components: {
     shopCover,
-    cateList
+    cateList,
+    shopCard
   }
 }
 </script>
+<style lang="less" scoped>
+  .sweet-shop__content {
+    padding: 15px;
+  }
+  .shop-pagination {
+    justify-content: center;
+    margin-top: 1.6rem;
+  }
+</style>
+

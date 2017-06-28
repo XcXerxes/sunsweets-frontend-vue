@@ -42,10 +42,12 @@
     },
     mounted () {
       TweenMax.to(this.$el, 0.3, { left: 0, opacity: 1, ease: Power4.easeIn })
+      /*
       this.isScroll = false
       window.addEventListener('scroll', (event) => {
         this.setScroll()
       }, false)
+      */
     }
   }
 </script>

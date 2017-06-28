@@ -5,14 +5,14 @@
       <div class="sweet-home__show">
         <sweet-subTitle label="甜品 SHOW"  icon-type="polymer" color="#ff4081" ></sweet-subTitle>
         <sweet-more label="更多" icon-type="chevron_right" icon-color="#e4e4e4" ></sweet-more>
-        <sweet-list></sweet-list>
+        <sweet-list :list="showHotList"></sweet-list>
       </div>
     </div>
     <div class="sweet-container">
       <div class="sweet-home__shop">
         <sweet-subTitle label="甜品驿站" icon-type="account_balance" color="#7e57c2"></sweet-subTitle>
         <sweet-more label="更多" icon-type="chevron_right" icon-color="#e4e4e4" ></sweet-more>
-        <sweet-list></sweet-list>
+        <sweet-list :list="showHotList"></sweet-list>
       </div>
     </div>
     <div class="sweet-container">
@@ -52,7 +52,8 @@
     },
     computed: {
       ...mapGetters([
-        'carouselList'
+        'carouselList',
+        'showHotList'
       ])
     },
     watch: {
@@ -79,6 +80,7 @@
       }
     },
     created () {
+      this.$store.commit('getList')
       this.$store.dispatch('fetchCarouselList', {
         currentPage: 1,
         limit: 5

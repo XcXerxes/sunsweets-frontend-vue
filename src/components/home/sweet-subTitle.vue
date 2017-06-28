@@ -12,9 +12,18 @@
       computedStyle () {
         return {
           color: this.color || '#e4e4e4',
-          fontSize: this.size || '18px'
+          fontSize: this.size || '24px'
         }
       }
     }
   }
 </script>
+<style scoped>
+  .sweet-subTitle>i {
+        text-shadow: 3px 2px 4px #b9b9b9;
+  }
+  .sweet-subTitle>span {
+        text-shadow: 3px 2px 4px #b9b9b9;
+  }
+</style>
+

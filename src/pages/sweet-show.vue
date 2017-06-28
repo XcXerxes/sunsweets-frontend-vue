@@ -18,7 +18,7 @@
         </div>
         <div class="sweet-show__info">
           <show-sweet-list />
-          <mu-pagination :total="total" showSizeChanger :pageSizeOption="[10, 15, 20]"
+          <mu-pagination :total="total" :pageSizeOption="[10, 15, 20]"
           :current="currentPage" :pageSize="limit"
           @pageSizeChange="handlePageSize" @pageChange="handlePage" class="sweet-pagination"></mu-pagination>
         </div>
