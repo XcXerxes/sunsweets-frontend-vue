@@ -73,6 +73,7 @@
         }
       },
       mounted () {
+        /*
         window.addEventListener('scroll', () => {
           console.log(document.body.scrollTop)
           /*
@@ -96,7 +97,7 @@
             }
           }
           */
-        }, false)
+       // }, false)
       }
     }
 </script>

@@ -4,13 +4,13 @@
       <template v-for="item in carouselList">
         <div class="swiper-slide">
           <div class="swiper-mask"></div>
-          <img :src="computedImg(item.img)" class="swiper-lazy" :style="{width:'100%', height: '760px'}" />
+          <img :src="computedImg(item.img)" class="swiper-lazy" :style="{maxWidth:'100%', maxHeight: '760px'}" />
         </div>
       </template>
     </div>
     <div class="swiper-button-prev"></div>
     <div class="swiper-button-next"></div>
-  
+
     <div class="swiper-pagination"></div>
   </div>
 </template>

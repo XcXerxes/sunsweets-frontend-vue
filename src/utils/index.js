@@ -27,3 +27,4 @@ window.__isMobile = window.navigator.userAgent.includes('Mobile')
  * @methods isPc pc端
  */
 window.__isPc = !window.navigator.userAgent.includes('Mobile')
+

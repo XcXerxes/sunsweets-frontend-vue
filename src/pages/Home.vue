@@ -5,14 +5,14 @@
       <div class="sweet-home__show">
         <sweet-subTitle label="甜品 SHOW"  icon-type="polymer" color="#ff4081" ></sweet-subTitle>
         <sweet-more label="更多" icon-type="chevron_right" icon-color="#e4e4e4" ></sweet-more>
-        <sweet-list :list="showHotList"></sweet-list>
+        <sweet-show :list="showHotList"></sweet-show>
       </div>
     </div>
     <div class="sweet-container">
       <div class="sweet-home__shop">
         <sweet-subTitle label="甜品驿站" icon-type="account_balance" color="#7e57c2"></sweet-subTitle>
         <sweet-more label="更多" icon-type="chevron_right" icon-color="#e4e4e4" ></sweet-more>
-        <sweet-list :list="showHotList"></sweet-list>
+        <sweet-shop :list="showHotList"></sweet-shop>
       </div>
     </div>
     <div class="sweet-container">
@@ -36,12 +36,15 @@
 
 <script>
   import sweetCarousel from '@/components/home/sweet-carousel'
-  import sweetList from '@/components/home/sweet-show'
+  import sweetShow from '@/components/home/sweet-show'
+  import sweetShop from '@/components/home/sweet-shop'
   import sweetSubTitle from '@/components/home/sweet-subTitle'
   import sweetMore from '@/components/home/sweet-more'
   import callForm from '@/components/home/call-form'
   import aboutContent from '@/config/about-config'
   import {mapGetters} from 'vuex'
+  import {TweenLite, Power3} from 'gsap'
+  import 'gsap/ScrollToPlugin'
 
   export default {
     data () {
@@ -86,9 +89,15 @@
         limit: 5
       })
     },
+    mounted () {
+      if (document.body.scrollTop > 100) {
+        TweenLite.to(window, 1, {scrollTo: {y: 0}, ease: Power3.easeOut}, '-=0.25')
+      }
+    },
     components: {
       sweetCarousel,
-      sweetList,
+      sweetShow,
+      sweetShop,
       sweetSubTitle,
       sweetMore,
       callForm

@@ -32,6 +32,9 @@
   import cateList from '@/components/common/cate-list'
   import showSweetList from '@/components/show/show-sweet-list'
   import showVideo from '@/components/show/show-video'
+  import {TweenLite, Power3} from 'gsap'
+  import 'gsap/ScrollToPlugin'
+
   export default {
     data () {
       return {
@@ -63,6 +66,11 @@
       },
       handlePage (currentPage) {
 
+      }
+    },
+    mounted () {
+      if (document.body.scrollTop > 100) {
+        TweenLite.to(window, 1, {scrollTo: {y: 0}, ease: Power3.easeOut}, '-=0.25')
       }
     },
     components: {

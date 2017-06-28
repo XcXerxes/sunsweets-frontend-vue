@@ -7,16 +7,24 @@
 </template>
 
 <script>
-  import {TweenLite} from 'gsap/ScrollToPlugin'
-  import {Power2} from 'gsap'
-  
+  import {TweenMax, Power3} from 'gsap'
+  import 'gsap/ScrollToPlugin'
   export default {
     methods: {
       backTop () {
-        if (TweenLite) {
-          TweenLite.to(window, 2, {scrollTo: {y: 0}, ease: Power2.easeOut})
-        }
+        TweenMax.to(window, 1, {scrollTo: {y: 0}, ease: Power3.easeOut}, '-=0.25')
       }
+    },
+    mounted () {
+      TweenMax.set(this.$el, {opacity: 0})
+      window.addEventListener('scroll', () => {
+        const scrollTop = document.body.scrollTop
+        if (scrollTop < 150) {
+          TweenMax.to(this.$el, 1.6, {opacity: 0, ease: Power3.easeOut}, '-=0.25')
+        } else {
+          TweenMax.to(this.$el, 1.6, {opacity: 1, ease: Power3.easeOut}, '-=0.25')
+        }
+      }, false)
     }
   }
 </script>

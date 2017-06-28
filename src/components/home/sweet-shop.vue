@@ -1,18 +1,18 @@
 <template>
   <mu-row gutter>
     <template v-for="(item, index) in list">
-      <mu-col width="100" tablet="50" desktop="33">
-        <sweet-show-item :key="index" :data="item" type="show"></sweet-show-item>
+      <mu-col width="100" tablet="100" desktop="100">
+        <sweet-shop-item :key="index" :data="item"></sweet-shop-item>
       </mu-col>
     </template>
   </mu-row>
 </template>
 <script>
-import sweetShowItem from './sweet-show-item'
+import sweetShopItem from './sweet-shop-item'
 export default {
   props: ['list'],
   components: {
-    sweetShowItem
+    sweetShopItem
   }
 }
 </script>

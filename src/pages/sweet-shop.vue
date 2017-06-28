@@ -27,6 +27,8 @@
 import shopCover from '@/components/shop/shop-cover'
 import cateList from '@/components/common/cate-list'
 import shopCard from '@/components/shop/shop-card'
+import {TweenMax, Power3} from 'gsap'
+import 'gsap/ScrollToPlugin'
 
 export default {
   data () {
@@ -61,6 +63,11 @@ export default {
     },
     handlePage (currentPage) {
       this.currentPage = currentPage
+    }
+  },
+  mounted () {
+    if (document.body.scrollTop > 100) {
+      TweenMax.to(window, 1, {scrollTo: {y: 0}, ease: Power3.easeOut}, '-=0.25')
     }
   },
   components: {
