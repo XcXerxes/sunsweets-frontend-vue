@@ -11,7 +11,7 @@
 </template>
 <script>
   // *:class="showBg ? 'header-scroll' : 'header-noScroll' "
-  import {TweenMax, Power4} from 'gsap'
+  import {TweenMax, Back} from 'gsap'
   export default {
     data () {
       return {
@@ -41,13 +41,11 @@
       console.log('update')
     },
     mounted () {
-      TweenMax.to(this.$el, 0.3, { left: 0, opacity: 1, ease: Power4.easeIn })
-      /*
-      this.isScroll = false
-      window.addEventListener('scroll', (event) => {
-        this.setScroll()
-      }, false)
-      */
+      TweenMax.staggerTo('.header-appbar', 1.2, {
+        left: 0,
+        opacity: 1,
+        ease: Back.easeOut
+      }, 0.5)
     }
   }
 </script>
@@ -68,15 +66,13 @@
   color:#7e57c2;
   font-weight: 500;
   height: 52px;
+  left:-1000px;
   line-height: 52px;
-  left:-600px;
   position: fixed;
-  opacity: 0;
 }
 .mu-appbar.header-appbar.header-scroll {
   background-color: #f9f9f9;
   top:0;
-  transition: all .6s ease;
   box-shadow: 0 2px 6px #e4e4e4;
 }
 

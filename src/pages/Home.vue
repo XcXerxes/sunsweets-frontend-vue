@@ -12,14 +12,13 @@
       <div class="sweet-home__shop">
         <sweet-subTitle label="甜品驿站" icon-type="account_balance" color="#7e57c2"></sweet-subTitle>
         <sweet-more label="更多" icon-type="chevron_right" icon-color="#e4e4e4" ></sweet-more>
-        <sweet-shop :list="showHotList"></sweet-shop>
+        <sweet-shop :list="hotShopList"></sweet-shop>
       </div>
     </div>
     <div class="sweet-container">
       <div class="sweet-home__about">
         <sweet-subTitle label="关于我们" icon-type="dashboard" color="#42a5f5" ></sweet-subTitle>
-        <div class="sweet-about__content" v-html="content">
-        </div>
+        <sweet-about v-once></sweet-about>
       </div>
     </div>
     <div class="sweet-container">
@@ -41,7 +40,7 @@
   import sweetSubTitle from '@/components/home/sweet-subTitle'
   import sweetMore from '@/components/home/sweet-more'
   import callForm from '@/components/home/call-form'
-  import aboutContent from '@/config/about-config'
+  import sweetAbout from '@/components/home/sweet-about'
   import {mapGetters} from 'vuex'
   import {TweenLite, Power3} from 'gsap'
   import 'gsap/ScrollToPlugin'
@@ -49,14 +48,14 @@
   export default {
     data () {
       return {
-        content: aboutContent.content,
         topPopup: false
       }
     },
     computed: {
       ...mapGetters([
         'carouselList',
-        'showHotList'
+        'showHotList',
+        'hotShopList'
       ])
     },
     watch: {
@@ -84,6 +83,7 @@
     },
     created () {
       this.$store.commit('getList')
+      this.$store.commit('getHotShopList')
       this.$store.dispatch('fetchCarouselList', {
         currentPage: 1,
         limit: 5
@@ -100,14 +100,12 @@
       sweetShop,
       sweetSubTitle,
       sweetMore,
-      callForm
+      callForm,
+      sweetAbout
     }
   }
 </script>
 <style lang="" scoped>
-  .sweet-about__content{
-    text-align: center;
-  }
   .sweet-about__content p{
     font-size:1.8rem;
     color:#eee;

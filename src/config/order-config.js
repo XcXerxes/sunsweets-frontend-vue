@@ -16,7 +16,7 @@ export default [
     field: 'read'
   },
   {
-    title: '最后更新',
-    field: 'updatedAt'
+    title: '难易度',
+    field: 'diff'
   }
 ]

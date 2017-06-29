@@ -4,12 +4,12 @@
       <mu-icon :value="iconType" :color="iconColor" :size="20"></mu-icon>
       <span>{{title}}</span>
     </div>
-    <div class="sweet-show-list__content"></div>
-    <template v-for="(item, index) in list">
-      <mu-flat-button  :key="index" @click="selectLabel(item.title)"
-      :label="item.title" :primary="item.primary || false" :secondary="item.secondary || false"
-      :activeClass="activeClass"></mu-flat-button>
-    </template>
+    <div class="sweet-show-list__content">
+      <template v-for="(item, index) in list">
+        <mu-flat-button  :key="index" @click="selectLabel(index, item.title)"
+        :label="item.title" :secondary="index === selectedIndex ? true : false"></mu-flat-button>
+      </template>
+    </div>
   </div>
 </template>
 
@@ -17,9 +17,19 @@
   export default {
     props: ['title', 'iconType', 'iconColor', 'list', 'activeClass'],
     name: 'show-sub-list',
+    data () {
+      return {
+        selectedIndex: 0
+      }
+    },
     methods: {
-      selectLabel (label) {
-
+      selectLabel (idx, title) {
+        this.selectedIndex = idx
+      },
+      watch: {
+        selectedIndex: function(oldVal, val) {
+          
+        }
       }
     },
     created () {
@@ -43,6 +53,7 @@
     font-weight: 600;
   }
   .sweet-show-list__content {
+    flex:1;
   }
 </style>
 

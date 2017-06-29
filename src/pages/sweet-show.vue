@@ -7,11 +7,11 @@
     <div class="sweet-container">
       <div class="sweet-main">
         <div class="sweet-container__list">
-          <cate-list :activeClass="activeClass" icon-type="location_city" icon-color="#7e57c2" :list="list" title="城市："></cate-list>
+          <cate-list :activeClass="activeClass" icon-type="location_city" icon-color="#7e57c2" :list="cityList" title="城市："></cate-list>
           <mu-divider />
-          <cate-list :activeClass="activeClass" icon-type="room" icon-color="#66bb6a" :list="list" title="片区："></cate-list>
+          <cate-list :activeClass="activeClass" icon-type="room" icon-color="#66bb6a" :list="areaList" title="片区："></cate-list>
           <mu-divider  />
-          <cate-list :activeClass="activeClass" icon-type="format_indent_increase" icon-color="#42a5f5" :list="list" title="分类："></cate-list>
+          <cate-list :activeClass="activeClass" icon-type="format_indent_increase" icon-color="#42a5f5" :list="cityList" title="分类："></cate-list>
           <mu-divider />
           <cate-list :activeClass="activeClass" icon-type="graphic_eq" icon-color="#ff4081" :list="orderList" title="排序："></cate-list>
           <mu-divider  />
@@ -28,10 +28,10 @@
 </template>
 <script>
   import orderConfig from '@/config/order-config'   // 排序的分类信息
-
   import cateList from '@/components/common/cate-list'
   import showSweetList from '@/components/show/show-sweet-list'
   import showVideo from '@/components/show/show-video'
+  import {formatCity, formatArea} from '@/utils'
   import {TweenLite, Power3} from 'gsap'
   import 'gsap/ScrollToPlugin'
 
@@ -40,20 +40,8 @@
       return {
         mp4Src: require('../assets/media/bg.mp4'),
         activeClass: 'show-list-active',
-        list: [
-          {
-            label: '北京'
-          },
-          {
-            label: '上海'
-          },
-          {
-            label: '广州'
-          },
-          {
-            label: '深圳'
-          }
-        ],
+        cityList: formatCity(),
+        areaList: formatArea(formatCity()[0].value),
         orderList: orderConfig,
         total: 300,
         limit: 9,

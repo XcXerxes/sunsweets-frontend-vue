@@ -8,6 +8,9 @@ import App from './App'
 import router from './router'
 import './assets/less/public.less'
 import 'muse-components/grid/grid.less'
+import VueLazyload from 'vue-lazyload'  // img lazyload
+
+import './utils/listenScroll'   // 监听滚动事件，实现 animation
 
 import appBar from 'muse-components/appBar'
 import paper from 'muse-components/paper'
@@ -42,6 +45,11 @@ Vue.component(popup.name, popup)
 Vue.component(divider.name, divider)
 Vue.component(pagination.name, pagination)
 Vue.component(circularProgress.name, circularProgress)
+
+Vue.use(VueLazyload, {
+  preLoad: 1.3,
+  attempt: 1
+})
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */
