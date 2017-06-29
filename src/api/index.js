@@ -21,8 +21,25 @@ export default {
    * @getCarouselList  获取轮播图列表
    */
   getCarouselList ({currentPage, limit, sort}) {
-    sort = sort ? `&srot=${sort}` : ''
+    sort = sort ? `&sort=${sort}` : ''
     return fetch(`${config.orginUrl}frontend/carousel/list?limit=${limit}&currentPage=${currentPage}${sort}`, _parseParams())
+      .then(checkStatus)
+      .then(_parseResponse)
+      .then(data => {
+        return data
+      }).catch(err => {
+        return err
+      })
+  },
+  /**
+   * @getSweetShowList 排序
+   */
+  getSweetShowList ({currentPage, limit, area, diff, sweetCateId, sort}) {
+    area = area ? `&area=${encodeURIComponent(area)}` : ''
+    diff = diff ? `&diff=${diff}` : ''
+    sweetCateId = sweetCateId ? `&sweetCateId=${sweetCateId}` : ''
+    sort = sort ? `&sort=${sort}` : ''
+    return fetch(`${config.orginUrl}frontend/sweetShow/list?limit=${limit}&currentPage=${currentPage}${sort}${area}${diff}${sweetCateId}`, _parseParams())
       .then(checkStatus)
       .then(_parseResponse)
       .then(data => {

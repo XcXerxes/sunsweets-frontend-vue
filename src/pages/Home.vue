@@ -34,6 +34,7 @@
 </template>
 
 <script>
+  import '@/utils/listenScroll'   // 监听滚动事件，实现 animation
   import sweetCarousel from '@/components/home/sweet-carousel'
   import sweetShow from '@/components/home/sweet-show'
   import sweetShop from '@/components/home/sweet-shop'

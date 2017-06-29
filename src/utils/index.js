@@ -51,14 +51,14 @@ const formatCity = () => {
  */
 const formatArea = (currentCity) => {
   let area = regionData[currentCity]
-  if (currentCity === '') {
-    area = regionData['110000']
-  }
   if (!area) {
-    return ''
+    return [{
+      value: '',
+      title: '全部'
+    }]
   }
   let arr = [{
-    value: 'all',
+    value: '',
     title: '全部'
   }]
   for (let item in area) {
@@ -70,4 +70,4 @@ const formatArea = (currentCity) => {
   return arr
 }
 
-export {checkStatus, _parseResponse, formatCity, formatArea}
+export { checkStatus, _parseResponse, formatCity, formatArea }

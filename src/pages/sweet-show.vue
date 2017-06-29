@@ -7,10 +7,8 @@
     <div class="sweet-container">
       <div class="sweet-main">
         <div class="sweet-container__list">
-          <cate-list :activeClass="activeClass" icon-type="location_city" icon-color="#7e57c2" :list="cityList" title="城市："></cate-list>
+          <cate-list :activeClass="activeClass" icon-type="location_city" icon-color="#7e57c2" :list="cityList" title="城市：" v-on:select-handle="citySelectHandle"></cate-list>
           <mu-divider />
-          <cate-list :activeClass="activeClass" icon-type="room" icon-color="#66bb6a" :list="areaList" title="片区："></cate-list>
-          <mu-divider  />
           <cate-list :activeClass="activeClass" icon-type="format_indent_increase" icon-color="#42a5f5" :list="cityList" title="分类："></cate-list>
           <mu-divider />
           <cate-list :activeClass="activeClass" icon-type="graphic_eq" icon-color="#ff4081" :list="orderList" title="排序："></cate-list>
@@ -54,6 +52,9 @@
       },
       handlePage (currentPage) {
 
+      },
+      citySelectHandle (item) {
+        this.areaList = formatArea(item.value)
       }
     },
     mounted () {

@@ -10,8 +10,6 @@ import './assets/less/public.less'
 import 'muse-components/grid/grid.less'
 import VueLazyload from 'vue-lazyload'  // img lazyload
 
-import './utils/listenScroll'   // 监听滚动事件，实现 animation
-
 import appBar from 'muse-components/appBar'
 import paper from 'muse-components/paper'
 import flatButton from 'muse-components/flatButton'

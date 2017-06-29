@@ -6,7 +6,7 @@
     </div>
     <div class="sweet-show-list__content">
       <template v-for="(item, index) in list">
-        <mu-flat-button  :key="index" @click="selectLabel(index, item.title)"
+        <mu-flat-button  :key="index" @click="selectLabel(index, item)"
         :label="item.title" :secondary="index === selectedIndex ? true : false"></mu-flat-button>
       </template>
     </div>
@@ -23,12 +23,15 @@
       }
     },
     methods: {
-      selectLabel (idx, title) {
+      selectLabel (idx, item) {
         this.selectedIndex = idx
+        this.$emit('select-handle', item)
       },
       watch: {
-        selectedIndex: function(oldVal, val) {
-          
+        selectedIndex: function (oldVal, val) {
+          if (oldVal !== val) {
+            this.name = ''
+          }
         }
       }
     },
