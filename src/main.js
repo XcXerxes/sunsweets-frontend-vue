@@ -26,6 +26,12 @@ import popup from 'muse-components/popup'
 import divider from 'muse-components/divider'
 import pagination from 'muse-components/pagination'
 import circularProgress from 'muse-components/circularProgress'
+import card from 'muse-components/card/card'
+import cardMedia from 'muse-components/card/cardMedia'
+import cardTitle from 'muse-components/card/cardTitle'
+import cardText from 'muse-components/card/cardText'
+import cardHeader from 'muse-components/card/cardHeader'
+import cardActions from 'muse-components/card/cardActions'
 
 Vue.component(appBar.name, appBar)
 Vue.component(paper.name, paper)
@@ -43,6 +49,12 @@ Vue.component(popup.name, popup)
 Vue.component(divider.name, divider)
 Vue.component(pagination.name, pagination)
 Vue.component(circularProgress.name, circularProgress)
+Vue.component(card.name, card)
+Vue.component(cardMedia.name, cardMedia)
+Vue.component(cardTitle.name, cardTitle)
+Vue.component(cardText.name, cardText)
+Vue.component(cardHeader.name, cardHeader)
+Vue.component(cardActions.name, cardActions)
 
 Vue.use(VueLazyload, {
   preLoad: 1.3,

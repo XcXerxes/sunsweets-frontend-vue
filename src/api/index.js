@@ -20,7 +20,7 @@ export default {
   /**
    * @getCarouselList  获取轮播图列表
    */
-  getCarouselList ({currentPage, limit, sort}) {
+  getCarouselList ({ currentPage, limit, sort }) {
     sort = sort ? `&sort=${sort}` : ''
     return fetch(`${config.orginUrl}frontend/carousel/list?limit=${limit}&currentPage=${currentPage}${sort}`, _parseParams())
       .then(checkStatus)
@@ -34,12 +34,11 @@ export default {
   /**
    * @getSweetShowList 排序
    */
-  getSweetShowList ({currentPage, limit, area, diff, sweetCateId, sort}) {
-    area = area ? `&area=${encodeURIComponent(area)}` : ''
-    diff = diff ? `&diff=${diff}` : ''
-    sweetCateId = sweetCateId ? `&sweetCateId=${sweetCateId}` : ''
-    sort = sort ? `&sort=${sort}` : ''
-    return fetch(`${config.orginUrl}frontend/sweetShow/list?limit=${limit}&currentPage=${currentPage}${sort}${area}${diff}${sweetCateId}`, _parseParams())
+  getSweetShowList ({ currentPage, limit, area, sweetCateId, sort }) {
+    area = (area && area !== 'all') ? `&area=${area}` : ''
+    sweetCateId = (sweetCateId && sweetCateId !== 'all') ? `&sweetCateId=${sweetCateId}` : ''
+    sort = sort ? `&sort=${sort}-desc` : ''
+    return fetch(`${config.orginUrl}frontend/sweetShow/list?limit=${limit}&currentPage=${currentPage}${area}${sweetCateId}${sort}`, _parseParams())
       .then(checkStatus)
       .then(_parseResponse)
       .then(data => {
@@ -47,5 +46,24 @@ export default {
       }).catch(err => {
         return err
       })
+  },
+  /**
+   * @getAllCate 获取所有的分类
+   */
+  getAllCate () {
+    return new Promise((resolve, reject) => {
+      if (this.allCate) {
+        return resolve(this.allCate)
+      }
+      fetch(`${config.orginUrl}frontend/sweetCate/all`, _parseParams())
+        .then(checkStatus)
+        .then(_parseResponse)
+        .then(data => {
+          this.allCate = data
+          resolve(data)
+        }).catch(err => {
+          reject(err)
+        })
+    })
   }
 }

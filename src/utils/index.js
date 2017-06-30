@@ -34,7 +34,7 @@ window.__isPc = !window.navigator.userAgent.includes('Mobile')
 const formatCity = () => {
   const city = regionData['86']
   let arr = [{
-    value: '',
+    value: 'all',
     title: '全部'
   }]
   for (let item in city) {

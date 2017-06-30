@@ -2,14 +2,15 @@
   <div class="sweet-info">
     <mu-circular-progress :size="50" class="sweet-info__progress"></mu-circular-progress>
     <mu-row gutter >
-      <template v-for="n in 9">
-        <mu-col width="100" tablet="50" desktop="33" class="sweet-info__col">
-          <div class="sweet-info__content" @mouseenter="mouseenterHandle" @mouseleave="mouseleaveHandle">
-            <div class="sweet-info__body"></div>
-            <div class="sweet-info__sub" ref="sweetInfoSub">
-              <span>sub_title</span>
-            </div>
-          </div>
+      <template v-for="(item,index) in data">
+        <mu-col width="100" tablet="50" desktop="33" class="sweet-info__col" :key="index">
+          <mu-card>
+            <mu-card-media :title="item.title">
+              <img v-lazy="computedThumb(item.thumb)">
+            </mu-card-media>
+            <mu-card-title :title="item.title"></mu-card-title>
+            <mu-card-text>{{item.caption}}</mu-card-text>
+          </mu-card>
         </mu-col>
       </template>
     </mu-row>
@@ -17,8 +18,13 @@
 </template>
 <script>
   import {TweenMax, Power3} from 'gsap'
+  import config from '@/config'
   export default {
+    props: ['data'],
     methods: {
+      computedThumb (thumb) {
+        return config.orginImg + thumb
+      },
       mouseenterHandle (event) {
         const sweetInfoSub = event.target.getElementsByClassName('sweet-info__sub')[0]
         TweenMax.to(sweetInfoSub, 0.3, {

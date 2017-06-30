@@ -1,22 +1,22 @@
 export default [
   {
     title: '热门',
-    field: 'hot'
+    value: 'id'
   },
   {
     title: '最新发布',
-    field: 'createdAt'
+    value: 'createdAt'
   },
   {
     title: '最多收藏',
-    field: 'collection'
+    value: 'collection'
   },
   {
     title: '最多浏览',
-    field: 'read'
+    value: 'read'
   },
   {
     title: '难易度',
-    field: 'diff'
+    value: 'diff'
   }
 ]

@@ -6,8 +6,8 @@
     </div>
     <div class="sweet-show-list__content">
       <template v-for="(item, index) in list">
-        <mu-flat-button  :key="index" @click="selectLabel(index, item)"
-        :label="item.title" :secondary="index === selectedIndex ? true : false"></mu-flat-button>
+        <mu-flat-button  :key="index" @click="selectLabel(item)"
+        :label="item.title" :secondary="item.value === selected ? true : false"></mu-flat-button>
       </template>
     </div>
   </div>
@@ -15,16 +15,10 @@
 
 <script>
   export default {
-    props: ['title', 'iconType', 'iconColor', 'list', 'activeClass'],
+    props: ['title', 'iconType', 'iconColor', 'list', 'activeClass', 'selected'],
     name: 'show-sub-list',
-    data () {
-      return {
-        selectedIndex: 0
-      }
-    },
     methods: {
-      selectLabel (idx, item) {
-        this.selectedIndex = idx
+      selectLabel (item) {
         this.$emit('select-handle', item)
       },
       watch: {
@@ -36,7 +30,7 @@
       }
     },
     created () {
-      console.group(this.list)
+      console.log('current==========' + this.selected)
     }
   }
 </script>

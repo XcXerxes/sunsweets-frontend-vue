@@ -7,18 +7,21 @@
     <div class="sweet-container">
       <div class="sweet-main">
         <div class="sweet-container__list">
-          <cate-list :activeClass="activeClass" icon-type="location_city" icon-color="#7e57c2" :list="cityList" title="城市：" v-on:select-handle="citySelectHandle"></cate-list>
+          <cate-list :activeClass="activeClass" :selected="currentCity" icon-type="location_city"
+           icon-color="#7e57c2" :list="cityList" title="城市：" v-on:select-handle="citySelectHandle"></cate-list>
           <mu-divider />
-          <cate-list :activeClass="activeClass" icon-type="format_indent_increase" icon-color="#42a5f5" :list="cityList" title="分类："></cate-list>
+          <cate-list :activeClass="activeClass" :selected="currentCate" icon-type="format_indent_increase"
+           icon-color="#42a5f5" :list="allCate" title="分类：" v-on:select-handle="cateSelectHandle"></cate-list>
           <mu-divider />
-          <cate-list :activeClass="activeClass" icon-type="graphic_eq" icon-color="#ff4081" :list="orderList" title="排序："></cate-list>
+          <cate-list :activeClass="activeClass" :selected="currentSort" icon-type="graphic_eq" 
+          icon-color="#ff4081" :list="orderList" title="排序：" v-on:select-handle="sortSelectHandle"></cate-list>
           <mu-divider  />
         </div>
         <div class="sweet-show__info">
-          <show-sweet-list />
-          <mu-pagination :total="total" :pageSizeOption="[10, 15, 20]"
+          <show-sweet-list :data="sweetShowList" />
+          <mu-pagination :total="sweetShowTotal"
           :current="currentPage" :pageSize="limit"
-          @pageSizeChange="handlePageSize" @pageChange="handlePage" class="sweet-pagination"></mu-pagination>
+          @pageChange="handlePage" class="sweet-pagination"></mu-pagination>
         </div>
       </div>
     </div>
@@ -29,9 +32,10 @@
   import cateList from '@/components/common/cate-list'
   import showSweetList from '@/components/show/show-sweet-list'
   import showVideo from '@/components/show/show-video'
-  import {formatCity, formatArea} from '@/utils'
+  import {formatCity} from '@/utils'
   import {TweenLite, Power3} from 'gsap'
   import 'gsap/ScrollToPlugin'
+  import {mapGetters} from 'vuex'
 
   export default {
     data () {
@@ -39,12 +43,20 @@
         mp4Src: require('../assets/media/bg.mp4'),
         activeClass: 'show-list-active',
         cityList: formatCity(),
-        areaList: formatArea(formatCity()[0].value),
         orderList: orderConfig,
-        total: 300,
         limit: 9,
         currentPage: 1
       }
+    },
+    computed: {
+      ...mapGetters([
+        'sweetShowTotal',
+        'currentCity',
+        'currentCate',
+        'currentSort',
+        'allCate',
+        'sweetShowList'
+      ])
     },
     methods: {
       handlePageSize (limit) {
@@ -54,8 +66,57 @@
 
       },
       citySelectHandle (item) {
-        this.areaList = formatArea(item.value)
+        this.$store.commit('figureCurrentArea', {area: item.value})
+        this.$store.dispatch('fetchSweetShowList', {
+          limit: this.limit,
+          currentPage: this.currentPage
+        }).then(data => {
+          if (data && data.code === -200) {
+            console.error(data.message)
+          }
+        }).catch(err => {
+          console.error(err)
+        })
+      },
+      cateSelectHandle (item) {
+        this.$store.commit('figureCurrentCate', {sweetCateId: item.id})
+        this.$store.dispatch('fetchSweetShowList', {
+          limit: this.limit,
+          currentPage: this.currentPage
+        }).then(data => {
+          if (data && data.code === -200) {
+            console.error(data.message)
+          }
+        }).catch(err => {
+          console.error(err)
+        })
+      },
+      sortSelectHandle (item) {
+        this.$store.commit('figureCurrentSort', {sort: item.value})
+        this.$store.dispatch('fetchSweetShowList', {
+          limit: this.limit,
+          currentPage: this.currentPage
+        }).then(data => {
+          if (data && data.code === -200) {
+            console.error(data.message)
+          }
+        }).catch(err => {
+          console.error(err)
+        })
       }
+    },
+    created () {
+      this.$store.dispatch('fetchAllCate')
+      this.$store.dispatch('fetchSweetShowList', {
+        currentPage: this.currentPage,
+        limit: this.limit
+      }).then(data => {
+        if (data && data.code === -200) {
+          console.error(data.message)
+        }
+      }).catch(err => {
+        console.error(err)
+      })
     },
     mounted () {
       if (document.body.scrollTop > 100) {
