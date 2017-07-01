@@ -13,12 +13,12 @@
           <cate-list :activeClass="activeClass" :selected="currentCate" icon-type="format_indent_increase"
            icon-color="#42a5f5" :list="allCate" title="分类：" v-on:select-handle="cateSelectHandle"></cate-list>
           <mu-divider />
-          <cate-list :activeClass="activeClass" :selected="currentSort" icon-type="graphic_eq" 
+          <cate-list :activeClass="activeClass" :selected="currentSort" icon-type="graphic_eq"
           icon-color="#ff4081" :list="orderList" title="排序：" v-on:select-handle="sortSelectHandle"></cate-list>
           <mu-divider  />
         </div>
         <div class="sweet-show__info">
-          <show-sweet-list :data="sweetShowList" />
+          <show-sweet-list :data="sweetShowList" :loading="show_loading" />
           <mu-pagination :total="sweetShowTotal"
           :current="currentPage" :pageSize="limit"
           @pageChange="handlePage" class="sweet-pagination"></mu-pagination>
@@ -55,67 +55,57 @@
         'currentCate',
         'currentSort',
         'allCate',
-        'sweetShowList'
+        'sweetShowList',
+        'show_loading'
       ])
     },
     methods: {
-      handlePageSize (limit) {
-
-      },
-      handlePage (currentPage) {
-
-      },
-      citySelectHandle (item) {
-        this.$store.commit('figureCurrentArea', {area: item.value})
+      dispatchSweetList ({currentPage, limit}) {
         this.$store.dispatch('fetchSweetShowList', {
-          limit: this.limit,
-          currentPage: this.currentPage
+          limit,
+          currentPage
         }).then(data => {
           if (data && data.code === -200) {
             console.error(data.message)
           }
         }).catch(err => {
           console.error(err)
+        })
+      },
+      handlePage (currentPage) {
+        this.currentPage = currentPage
+        this.dispatchSweetList({
+          currentPage,
+          limit: this.limit
+        })
+      },
+      citySelectHandle (item) {
+        this.$store.commit('figureCurrentArea', {area: item.value})
+        this.dispatchSweetList({
+          currentPage: this.currentPage,
+          limit: this.limit
         })
       },
       cateSelectHandle (item) {
         this.$store.commit('figureCurrentCate', {sweetCateId: item.id})
-        this.$store.dispatch('fetchSweetShowList', {
-          limit: this.limit,
-          currentPage: this.currentPage
-        }).then(data => {
-          if (data && data.code === -200) {
-            console.error(data.message)
-          }
-        }).catch(err => {
-          console.error(err)
+        this.dispatchSweetList({
+          currentPage: this.currentPage,
+          limit: this.limit
         })
       },
       sortSelectHandle (item) {
         this.$store.commit('figureCurrentSort', {sort: item.value})
-        this.$store.dispatch('fetchSweetShowList', {
-          limit: this.limit,
-          currentPage: this.currentPage
-        }).then(data => {
-          if (data && data.code === -200) {
-            console.error(data.message)
-          }
-        }).catch(err => {
-          console.error(err)
+        this.dispatchSweetList({
+          currentPage: this.currentPage,
+          limit: this.limit
         })
       }
     },
     created () {
       this.$store.dispatch('fetchAllCate')
-      this.$store.dispatch('fetchSweetShowList', {
+      this.dispatchSweetList({
         currentPage: this.currentPage,
         limit: this.limit
-      }).then(data => {
-        if (data && data.code === -200) {
-          console.error(data.message)
-        }
-      }).catch(err => {
-        console.error(err)
       })
     },
     mounted () {
@@ -139,13 +129,16 @@
     position: absolute;
     left:0;
     right: 0;
-    max-height: 600px;
-    height: 600px;
+    top:0;
+    bottom: 0;
     background-color: rgba(0, 0, 0, .2);
   }
   .sweet-show__info {
     padding: .65rem;
     margin-top: 2rem;
+    min-height: 500px;
+    display: flex;
+    flex-direction: column;
   }
   .sweet-pagination {
     justify-content: flex-end;

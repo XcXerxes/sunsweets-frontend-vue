@@ -5,14 +5,14 @@ const state = {
   currentCity: 'all', // 当前的城市
   currentCate: 'all', // 当前的分类
   currentSort: 'id', // 当前的排序
-  sweetShowList: [],        // sweet show 列表
-  loading: false,   // 加载
-  total: 0
+  data: {},        // sweet show 列表
+  loading: false   // 加载
 }
 
 const getters = {
-  sweetShowList: state => state.sweetShowList,
-  sweetShowTotal: state => state.total,
+  sweetShowList: state => state.data.data,
+  sweetShowTotal: state => state.data.total,
+  show_loading: state => state.loading,
   currentCity: state => state.currentCity,
   currentCate: state => state.currentCate,
   currentSort: state => state.currentSort
@@ -51,8 +51,8 @@ const mutations = {
     state.loading = false
   },
   [types.SWEET_SHOW_LIST_RECEIVE] (state, {data}) {
-    state.sweetShowList = data.data
-    state.total = data.total
+    state.loading = false
+    state.data = Object.assign({}, data)
   },
   figureCurrentArea (state, {area}) {
     state.currentCity = area

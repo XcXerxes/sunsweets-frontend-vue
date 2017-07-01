@@ -24,7 +24,7 @@ const shopEaseIn = () => {
     opacity: 1,
     y: 0,
     ease: Power4.easeOut
-  }, 0.8)
+  }, 0.5)
 }
 
 // 首页 about

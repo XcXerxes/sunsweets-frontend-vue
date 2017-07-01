@@ -42,7 +42,7 @@
     .shop-card__left {
       flex: 0 1 250px;
       min-height:180px;
-      border: 1px solid #ccc; 
+      border: 1px solid #ccc;
     }
     .shop-card__right {
       padding:0 1rem;

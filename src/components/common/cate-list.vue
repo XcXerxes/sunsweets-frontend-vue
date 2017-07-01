@@ -19,13 +19,8 @@
     name: 'show-sub-list',
     methods: {
       selectLabel (item) {
-        this.$emit('select-handle', item)
-      },
-      watch: {
-        selectedIndex: function (oldVal, val) {
-          if (oldVal !== val) {
-            this.name = ''
-          }
+        if (this.selected !== item.value) {
+          this.$emit('select-handle', item)
         }
       }
     },

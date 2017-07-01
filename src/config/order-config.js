@@ -13,7 +13,7 @@ export default [
   },
   {
     title: '最多浏览',
-    value: 'read'
+    value: 'reading'
   },
   {
     title: '难易度',
