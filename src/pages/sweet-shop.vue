@@ -10,7 +10,7 @@
           <mu-divider />
           <cate-list icon-type="location_city" icon-color="#7e57c2" :list="list" title="消费："></cate-list>
           <mu-divider />
-          <cate-list icon-type="location_city" icon-color="#7e57c2" :list="list" title="排序："></cate-list>
+          <cate-list icon-type="location_city" icon-color="#7e57c2" :list="sortList" title="排序："></cate-list>
           <mu-divider />
         </div>
         <div class="sweet-shop__content">
@@ -27,6 +27,8 @@
 import shopCover from '@/components/shop/shop-cover'
 import cateList from '@/components/common/cate-list'
 import shopCard from '@/components/shop/shop-card'
+import {formatCity} from '@/utils'
+import sortList from '@/config/shop-sort'
 import {TweenMax, Power3} from 'gsap'
 import 'gsap/ScrollToPlugin'
 
@@ -38,20 +40,8 @@ export default {
         title: '食色性也，民以食为天',
         caption: '养生，保健，滋补，美丽只此一生'
       },
-      list: [
-        {
-          title: '北京'
-        },
-        {
-          title: '上海'
-        },
-        {
-          title: '广州'
-        },
-        {
-          title: '深圳'
-        }
-      ],
+      list: formatCity(),
+      sortList: sortList,
       total: 36,
       currentPage: 1,
       limit: 8

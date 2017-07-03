@@ -1,7 +1,7 @@
 <template>
   <div class="sweet-info">
     <mu-circular-progress v-if="loading" :size="50" class="sweet-info__progress"></mu-circular-progress>
-    <h3 v-if="data.length===0" :style="{textAlign: 'center'}">暂时无数据</h3>
+    <h3 v-if="data && data.length===0" :style="{textAlign: 'center'}">暂时无数据</h3>
     <template v-else>
       <mu-row gutter class="sweet-info__row">
         <template v-for="(item,index) in data">
