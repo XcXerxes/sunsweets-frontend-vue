@@ -13,13 +13,9 @@
           <cate-list :activeClass="activeClass" :selected="currentCity" icon-type="location_city"
            icon-color="#ef5350" :list="cityList" title="消费：" v-on:select-handle="citySelectHandle"></cate-list>
           <mu-divider />
-<<<<<<< .mine
           <cate-list :activeClass="activeClass" :selected="currentCity" icon-type="graphic_eq"
            icon-color="#ff4081" :list="sortList" title="排序：" v-on:select-handle="citySelectHandle"></cate-list>
-=======
-          <cate-list icon-type="location_city" icon-color="#7e57c2" :list="sortList" title="排序："></cate-list>
-          <mu-divider />
->>>>>>> .theirs
+
         </div>
         <div class="sweet-shop__content">
           <shop-card></shop-card>
@@ -35,13 +31,8 @@
 import shopCover from '@/components/shop/shop-cover'
 import cateList from '@/components/common/cate-list'
 import shopCard from '@/components/shop/shop-card'
-<<<<<<< .mine
 import {formatCity} from '@/utils'
 import shopSortConfig from '@/config/shop-sort'
-=======
-import {formatCity} from '@/utils'
-import sortList from '@/config/shop-sort'
->>>>>>> .theirs
 import {TweenMax, Power3} from 'gsap'
 import 'gsap/ScrollToPlugin'
 
@@ -53,13 +44,8 @@ export default {
         title: '食色性也，民以食为天',
         caption: '养生，保健，滋补，美丽只此一生'
       },
-<<<<<<< .mine
       cityList: formatCity(),
       sortList: shopSortConfig,
-=======
-      list: formatCity(),
-      sortList: sortList,
->>>>>>> .theirs
       total: 36,
       currentPage: 1,
       limit: 8
