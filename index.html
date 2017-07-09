@@ -8,5 +8,33 @@
 </head>
 <body>
   <div id="app"></div>
+  <script>
+    function NameBox(name) {
+      return {
+        fontWeight: 'bold',
+        labelContent: name
+      }
+    }
+
+    function memoize(fn) {
+      var cachedArg;
+      var cachedResult;
+      return function(arg) {
+        console.log(arg)
+        if(cachedArg ===arg){
+          return cachedResult
+        }
+        console.log("cachedArg==="+cachedArg)
+        cachedArg = arg
+        cachedResult = fn(arg)
+        return cachedResult
+      }
+    }
+    var MemoizedNameBox = memoize(NameBox)
+
+    console.log(MemoizedNameBox('xia can'))
+    console.log(MemoizedNameBox('xia can'))
+    console.log(MemoizedNameBox('xia can'))
+  </script>
 </body>
 </html>

@@ -4,14 +4,17 @@
     <section class="sweet-container">
       <div class="sweet-main">
         <div class="sweet-shop__cate">
-          <cate-list icon-type="location_city" icon-color="#7e57c2" :list="list" title="城市："></cate-list>
+          <cate-list :activeClass="activeClass" :selected="currentCity" icon-type="location_city"
+           icon-color="#7e57c2" :list="cityList" title="城市：" v-on:select-handle="citySelectHandle"></cate-list>
           <mu-divider/>
-          <cate-list icon-type="location_city" icon-color="#7e57c2" :list="list" title="区域："></cate-list>
+          <cate-list :activeClass="activeClass" :selected="currentCity" icon-type="location_city"
+           icon-color="#42a5f5" :list="cityList" title="区域：" v-on:select-handle="citySelectHandle"></cate-list>
           <mu-divider />
-          <cate-list icon-type="location_city" icon-color="#7e57c2" :list="list" title="消费："></cate-list>
+          <cate-list :activeClass="activeClass" :selected="currentCity" icon-type="location_city"
+           icon-color="#ef5350" :list="cityList" title="消费：" v-on:select-handle="citySelectHandle"></cate-list>
           <mu-divider />
-          <cate-list icon-type="location_city" icon-color="#7e57c2" :list="list" title="排序："></cate-list>
-          <mu-divider />
+          <cate-list :activeClass="activeClass" :selected="currentCity" icon-type="graphic_eq"
+           icon-color="#ff4081" :list="sortList" title="排序：" v-on:select-handle="citySelectHandle"></cate-list>
         </div>
         <div class="sweet-shop__content">
           <shop-card></shop-card>
@@ -27,6 +30,8 @@
 import shopCover from '@/components/shop/shop-cover'
 import cateList from '@/components/common/cate-list'
 import shopCard from '@/components/shop/shop-card'
+import {formatCity} from '@/utils'
+import shopSortConfig from '@/config/shop-sort'
 import {TweenMax, Power3} from 'gsap'
 import 'gsap/ScrollToPlugin'
 
@@ -38,20 +43,8 @@ export default {
         title: '食色性也，民以食为天',
         caption: '养生，保健，滋补，美丽只此一生'
       },
-      list: [
-        {
-          title: '北京'
-        },
-        {
-          title: '上海'
-        },
-        {
-          title: '广州'
-        },
-        {
-          title: '深圳'
-        }
-      ],
+      cityList: formatCity(),
+      sortList: shopSortConfig,
       total: 36,
       currentPage: 1,
       limit: 8
