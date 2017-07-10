@@ -4,6 +4,7 @@ import carousel from './modules/carousel'
 import show from './modules/show'
 import shop from './modules/shop'
 import sweetShow from './modules/sweetShow'
+import sweetShop from './modules/sweetShop'
 import state from './state'
 import getters from './getters'
 import mutations from './mutations'
@@ -20,7 +21,8 @@ export default new Vuex.Store({
     carousel,
     show,
     shop,
-    sweetShow
+    sweetShow,
+    sweetShop
   },
   strict: true,
   plugins: [createLogger()]

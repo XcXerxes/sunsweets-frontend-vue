@@ -4,16 +4,16 @@
     <section class="sweet-container">
       <div class="sweet-main">
         <div class="sweet-shop__cate">
-          <cate-list :activeClass="activeClass" :selected="currentCity" icon-type="location_city"
+          <cate-list :activeClass="activeClass" :selected="currentShopCity" icon-type="location_city"
            icon-color="#7e57c2" :list="cityList" title="城市：" v-on:select-handle="citySelectHandle"></cate-list>
           <mu-divider/>
-          <cate-list :activeClass="activeClass" :selected="currentCity" icon-type="location_city"
-           icon-color="#42a5f5" :list="cityList" title="区域：" v-on:select-handle="citySelectHandle"></cate-list>
+          <cate-list :activeClass="activeClass" :selected="currentShopArea" icon-type="location_city"
+           icon-color="#42a5f5" :list="areaList" title="区域：" v-on:select-handle="citySelectHandle"></cate-list>
           <mu-divider />
-          <cate-list :activeClass="activeClass" :selected="currentCity" icon-type="location_city"
+          <cate-list :activeClass="activeClass" :selected="currentMonetary" icon-type="location_city"
            icon-color="#ef5350" :list="cityList" title="消费：" v-on:select-handle="citySelectHandle"></cate-list>
           <mu-divider />
-          <cate-list :activeClass="activeClass" :selected="currentCity" icon-type="graphic_eq"
+          <cate-list :activeClass="activeClass" :selected="currentShopSort" icon-type="graphic_eq"
            icon-color="#ff4081" :list="sortList" title="排序：" v-on:select-handle="citySelectHandle"></cate-list>
 
         </div>
@@ -31,8 +31,9 @@
 import shopCover from '@/components/shop/shop-cover'
 import cateList from '@/components/common/cate-list'
 import shopCard from '@/components/shop/shop-card'
-import {formatCity} from '@/utils'
+import {formatCity, formatArea} from '@/utils'
 import shopSortConfig from '@/config/shop-sort'
+import {mapGetters} from 'vuex'
 import {TweenMax, Power3} from 'gsap'
 import 'gsap/ScrollToPlugin'
 
@@ -46,10 +47,22 @@ export default {
       },
       cityList: formatCity(),
       sortList: shopSortConfig,
+      areaList: formatArea(),
       total: 36,
       currentPage: 1,
       limit: 8
     }
+  },
+  computed: {
+    ...mapGetters([
+      'currentShopCity',
+      'currentShopArea',
+      'currentMonetary',
+      'currentShopSort',
+      'sweetShopList',
+      'sweetShopTotal',
+      'sweetShopLoading'
+    ])
   },
   methods: {
     handlePageSize (limit) {

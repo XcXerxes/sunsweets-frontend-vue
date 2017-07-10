@@ -51,16 +51,13 @@ const formatCity = () => {
  */
 const formatArea = (currentCity) => {
   let area = regionData[currentCity]
-  if (!area) {
-    return [{
-      value: '',
-      title: '全部'
-    }]
-  }
   let arr = [{
-    value: '',
+    value: 'all',
     title: '全部'
   }]
+  if (!area) {
+    return arr
+  }
   for (let item in area) {
     arr.push({
       value: item,

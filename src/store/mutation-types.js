@@ -20,3 +20,6 @@ export const SWEET_SHOW_LIST_FAIL = 'sweet_show_list_fail'
 /**
  * @sweet-shop
  */
+export const SWEET_SHOP_LIST_REQUEST = 'sweet_shop_list_request'
+export const SWEET_SHOP_LIST_RECEIVE = 'sweet_shop_list_receive'
+export const SWEET_SHOP_LIST_FAIL = 'sweet_shop_list_fail'
