@@ -8,13 +8,13 @@
            icon-color="#7e57c2" :list="cityList" title="城市：" v-on:select-handle="citySelectHandle"></cate-list>
           <mu-divider/>
           <cate-list :activeClass="activeClass" :selected="currentShopArea" icon-type="location_city"
-           icon-color="#42a5f5" :list="areaList" title="区域：" v-on:select-handle="citySelectHandle"></cate-list>
+           icon-color="#42a5f5" :list="areaList" title="区域：" v-on:select-handle="areaSelectHandle"></cate-list>
           <mu-divider />
           <cate-list :activeClass="activeClass" :selected="currentMonetary" icon-type="location_city"
-           icon-color="#ef5350" :list="cityList" title="消费：" v-on:select-handle="citySelectHandle"></cate-list>
+           icon-color="#ef5350" :list="cityList" title="消费：" v-on:select-handle="monetarySelectHandle"></cate-list>
           <mu-divider />
           <cate-list :activeClass="activeClass" :selected="currentShopSort" icon-type="graphic_eq"
-           icon-color="#ff4081" :list="sortList" title="排序：" v-on:select-handle="citySelectHandle"></cate-list>
+           icon-color="#ff4081" :list="sortList" title="排序：" v-on:select-handle="sortSelectHandle"></cate-list>
 
         </div>
         <div class="sweet-shop__content">
@@ -31,7 +31,7 @@
 import shopCover from '@/components/shop/shop-cover'
 import cateList from '@/components/common/cate-list'
 import shopCard from '@/components/shop/shop-card'
-import {formatCity, formatArea} from '@/utils'
+import {formatCity} from '@/utils'
 import shopSortConfig from '@/config/shop-sort'
 import {mapGetters} from 'vuex'
 import {TweenMax, Power3} from 'gsap'
@@ -45,9 +45,9 @@ export default {
         title: '食色性也，民以食为天',
         caption: '养生，保健，滋补，美丽只此一生'
       },
+      activeClass: 'show-list-active',
       cityList: formatCity(),
       sortList: shopSortConfig,
-      areaList: formatArea(),
       total: 36,
       currentPage: 1,
       limit: 8
@@ -61,7 +61,8 @@ export default {
       'currentShopSort',
       'sweetShopList',
       'sweetShopTotal',
-      'sweetShopLoading'
+      'sweetShopLoading',
+      'areaList'
     ])
   },
   methods: {
@@ -70,6 +71,22 @@ export default {
     },
     handlePage (currentPage) {
       this.currentPage = currentPage
+    },
+    citySelectHandle (item) {
+      this.$store.commit('figureShopCity', {city: item.value})
+      /* this.dispatchSweetList({
+        currentPage: this.currentPage,
+        limit: this.limit
+      }) */
+    },
+    areaSelectHandle (item) {
+      this.$store.commit('figureShopArea', {area: item.value})
+    },
+    monetarySelectHandle () {
+
+    },
+    sortSelectHandle () {
+
     }
   },
   mounted () {

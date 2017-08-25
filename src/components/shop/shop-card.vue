@@ -3,7 +3,7 @@
     <mu-col width="100" tablet="50" desktop="50" v-for="n in 8" :key="n">
       <div class="sweet-shop__card">
         <div class="shop-card__left">
-          <img />
+          <img src="http://localhost:4000/images/bankend_1498656682829_walnut-fudge-small.jpg"/>
         </div>
         <div class="shop-card__right">
           <div class="shop-card__heading">
@@ -43,6 +43,13 @@
       flex: 0 1 250px;
       min-height:180px;
       border: 1px solid #ccc;
+      box-shadow: 2px 2px 4px 1px #c5c5c5;
+      border-radius: 5px;
+      img {
+        max-width: 100%;
+        max-height: 100%;
+        border-radius: 5px;
+      }
     }
     .shop-card__right {
       padding:0 1rem;

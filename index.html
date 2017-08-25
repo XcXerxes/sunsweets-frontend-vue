@@ -35,6 +35,20 @@
     console.log(MemoizedNameBox('xia can'))
     console.log(MemoizedNameBox('xia can'))
     console.log(MemoizedNameBox('xia can'))
+	
+	function add(a,b){
+		var params = {name:a, age:b}
+		 var _residueLength = arguments.length-3
+    if (_residueLength >0 ) {
+        for (var i=_residueLength; i<arguments.length; i++) {
+            params = Object.assign(params, arguments[i])
+        }
+    }
+	console.log(params)
+	}
+	add('mary', 33, {like: 30}, {sex: 'man'})
+
   </script>
 </body>
 </html>
+

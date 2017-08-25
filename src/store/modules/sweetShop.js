@@ -1,4 +1,5 @@
 import * as types from '../mutation-types'
+import {formatArea} from '@/utils'
 // import api from '@/api'
 // state
 
@@ -8,7 +9,8 @@ const state = {
   currentMonetary: 'all', // 当前的消费
   currentSort: 'createdAt',      // 排序
   data: {},             // fetch 数据
-  loading: false       // loading
+  loading: false,       // loading
+  areaList: formatArea()
 }
 
 // getters
@@ -19,7 +21,8 @@ const getters = {
   currentShopSort: state => state.currentSort,
   sweetShopList: state => state.data.data,
   sweetShopTotal: state => state.data.total,
-  sweetShopLoading: state => state.loading
+  sweetShopLoading: state => state.loading,
+  areaList: state => state.areaList
 }
 
 // actions
@@ -42,7 +45,21 @@ const mutations = {
   },
   [types.SWEET_SHOW_LIST_FAIL] (state) {
     state.loading = false
+  },
+  figureShopCity (state, {city}) {
+    state.currentCity = city
+    state.areaList = formatArea(city)
+  },
+  figureShopArea (state, {area}) {
+    state.currentArea = area
+  },
+  figureShopmonetary (state, {monetary}) {
+    state.currentMonetary = monetary
+  },
+  figureShopSort (state, {sort}) {
+    state.currentSort = sort
   }
+
 }
 
 export default {
